@@ -1,21 +1,32 @@
-const App = () => { // PascalCase for component names
+const App = () => {
 
-    // jsx -> JavaScript XML
+    const handleClick = () => {
+        console.log("Button clicked!");
+    }
 
-    const name = "John Doe"; // Variable to be used in the component
-    const age = 30; // Variable to be used in the component
+    const handleClickWithData = (data) => {
+        console.log("Button clicked with data!", data);
+    }
 
-    const obj = {
-        city: "New York",
-        country: "USA"
+    const handleCreateRandomId = () => {
+        const randomId = crypto.randomUUID();
+        const randomDiv = document.getElementById("random")
+        randomDiv.style.color = "red";
+        randomDiv.style.fontSize = "20px";
+        randomDiv.innerText = randomId;
+
     }
 
     return <div>
-        <h1>Sample Heading</h1>
-        <p>Age of {name} is {age}</p>
-        <p>city: {obj.city} country:  {obj.country}</p>
-        <img src="https://reactjs.org/logo-og.png" alt="Hi" />
-    </div>  // Return a string to be rendered
+        <button onClick={handleClick}>Click Here</button>
+        <button onClick={() => {
+            handleClickWithData("hello World")
+        }}>Click With Data</button>
+        <div id="random"></div>
+        <button onClick={handleCreateRandomId}>Generate Random Id</button>
+    </div>
 }
 
-export default App; // Export the component as default
+export default App;
+// export
+

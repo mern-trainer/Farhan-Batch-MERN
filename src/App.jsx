@@ -1,37 +1,7 @@
-import { Fragment } from "react"; // named import
-import HomePage from "./pages/HomePage";
-// import HomePage from "./pages/HomePage"
+import State from "./pages/State";
 
 const App = () => {
-
-    return <Fragment>
-        <HomePage />
-    </Fragment>
-
-    // const handleClick = () => {
-    //     console.log("Button clicked!");
-    // }
-
-    // const handleClickWithData = (data) => {
-    //     console.log("Button clicked with data!", data);
-    // }
-
-    // const handleCreateRandomId = () => {
-    //     const randomId = crypto.randomUUID();
-    //     const randomDiv = document.getElementById("random")
-    //     randomDiv.style.color = "red";
-    //     randomDiv.style.fontSize = "20px";
-    //     randomDiv.innerText = randomId;
-    // }
-
-    // return <div>
-    //     <button onClick={handleClick}>Click Here</button>
-    //     <button onClick={() => {
-    //         handleClickWithData("hello World")
-    //     }}>Click With Data</button>
-    //     <div id="random"></div>
-    //     <button onClick={handleCreateRandomId}>Generate Random Id</button>
-    // </div>
+    return <State />    
 }
 
 export default App;

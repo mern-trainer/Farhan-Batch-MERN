@@ -10,10 +10,19 @@ const State = () => {
     // const response = useState(10)
     const [counter, setCounter] = useState(10)
     const [user, setUser] = useState("John")
+    const [passwords, setPasswords] = useState([])
 
     const handleClick = () => {
         setCounter(counter + 1)
     }
+
+    const handleGeneratePassword = () => {
+        const password = crypto.randomUUID()
+        setPasswords([password, ...passwords])
+    }
+
+    console.log(passwords);
+
     return <div>
         <h1>State Management In ReactJS</h1>
         <div>{counter}</div>
@@ -23,6 +32,9 @@ const State = () => {
             set user to {user == "John" ? "Alex" : "John"}
             {/* confition ? true statement : false statement */}
         </button>
+        Created Password: {passwords[0]}
+        <button onClick={handleGeneratePassword}>Generate Random Password</button>
+        {passwords.join(", ")}
     </div>
 }
 

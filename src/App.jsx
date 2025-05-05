@@ -1,7 +1,7 @@
-import State from "./pages/State";
+import ComponentA from "./pages/ComponentA";
 
 const App = () => {
-    return <State />    
+    return <ComponentA />    
 }
 
 export default App;

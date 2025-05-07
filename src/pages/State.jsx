@@ -3,6 +3,7 @@
 // Array Map -> Returns a new array with the results of calling a provided function on every element in this array
 
 import { useState } from "react";
+import NavBar from "../components/NavBar";
 
 // useState() -> function that lets you add React state to function components
 
@@ -28,6 +29,7 @@ const State = () => {
     })
 
     return <div>
+        <NavBar />
         <h1>State Management In ReactJS</h1>
         <div>{counter}</div>
         <button onClick={handleClick}>Click</button>

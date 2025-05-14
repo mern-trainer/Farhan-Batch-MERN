@@ -2,15 +2,17 @@
 // Hooks -> Functions that let you "hook into" React state and lifecycle features from function components
 // Array Map -> Returns a new array with the results of calling a provided function on every element in this array
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NavBar from "../components/NavBar";
+import { SampleContext } from "../App";
 
 // useState() -> function that lets you add React state to function components
 
 const State = () => {
     // let a = 10
     // const response = useState(10)
-    const [counter, setCounter] = useState(10)
+    const { counter, setCounter } = useContext(SampleContext)
+    // const [counter, setCounter] = useState(10)
     const [user, setUser] = useState("John")
     const [passwords, setPasswords] = useState([])
 

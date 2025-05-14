@@ -1,26 +1,20 @@
 // import ComponentA from "./pages/ComponentA";
-import { Route, Routes, BrowserRouter } from "react-router"
-import HomePage from "./pages/HomePage";
-import State from "./pages/State";
-import NavBar from "./components/NavBar";
-import Hover from "./pages/Hover";
 
-// Routing ->  
+import { createContext, useState } from "react";
+import Router from "./Router";
+
+
+// Routing ->
+
+// Context -> Gobal state managment
+
+export const SampleContext = createContext()
 
 const App = () => {
-    return <BrowserRouter>
-        <Routes>
-            <Route path="/" Component={HomePage} />
-            <Route path="/state" Component={State} />
-            <Route path="/hello" element={<div>
-                <NavBar />
-                <h1>Hello Word</h1>
-                <p>lorem ipsum</p>
-            </div>} />
-            <Route path="/hover" Component={Hover} />
-            <Route path="*" element={<h2><NavBar/> Page Not Found</h2>} />
-        </Routes>
-    </BrowserRouter>
+    const [counter, setCounter] = useState(0)
+    return <SampleContext.Provider value={{counter, setCounter}}>
+        <Router />
+    </SampleContext.Provider>
 }
 
 export default App;

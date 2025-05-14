@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Population Live Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        #population {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: #ff6b6b;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>World Population</h1>
+        <div id="population">Loading...</div>
+        <div class="stats">
+            <div class="stat-box">
+                <h3>Births Today</h3>
+                <div id="births">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>Deaths Today</h3>
+                <div id="deaths">0</div>
+            </div>
+        </div>
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        function updatePopulation() {
+            // Base population as of 2024
+            const basePopulation = 8045311447;
+            
+            // Average rates per second
+            const birthRate = 4.3;   // ~4.5 births per second globally
+            const deathRate = 2;     // ~2 deaths per second globally
+            
+            // Calculate time elapsed since start of year
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const secondsThisYear = Math.floor(diff / 1000);
+            
+            // Calculate current statistics
+            const births = secondsThisYear * birthRate;
+            const deaths = secondsThisYear * deathRate;
+            const currentPopulation = Math.floor(basePopulation + births - deaths);
+
+            // Update the display
+            document.getElementById('population').textContent = currentPopulation.toLocaleString();
+            document.getElementById('births').textContent = Math.floor(births).toLocaleString();
+            document.getElementById('deaths').textContent = Math.floor(deaths).toLocaleString();
+        }
+
+        // Update every second
+        setInterval(updatePopulation, 1000);
+        updatePopulation(); // Initial update
+    </script>
+</body>
+</html>

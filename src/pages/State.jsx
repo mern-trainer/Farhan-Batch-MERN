@@ -4,7 +4,8 @@
 
 import { useContext, useState } from "react";
 import NavBar from "../components/NavBar";
-import { SampleContext } from "../App";
+import { SampleContext } from "../Providers/SampleProvider";
+import { TodoContext } from "../Providers/TodoProvider";
 
 // useState() -> function that lets you add React state to function components
 
@@ -12,6 +13,7 @@ const State = () => {
     // let a = 10
     // const response = useState(10)
     const { counter, setCounter } = useContext(SampleContext)
+    const { addTodo } = useContext(TodoContext)
     // const [counter, setCounter] = useState(10)
     const [user, setUser] = useState("John")
     const [passwords, setPasswords] = useState([])
@@ -19,6 +21,8 @@ const State = () => {
     const handleClick = () => {
         setCounter(counter + 1)
     }
+
+    
 
     const handleGeneratePassword = () => {
         const password = crypto.randomUUID()
@@ -32,6 +36,7 @@ const State = () => {
 
     return <div>
         <NavBar />
+        <div onClick={() => addTodo("Hi")}>Add</div>
         <h1>State Management In ReactJS</h1>
         <div>{counter}</div>
         <button onClick={handleClick}>Click</button>

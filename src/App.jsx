@@ -1,20 +1,22 @@
 // import ComponentA from "./pages/ComponentA";
 
-import { createContext, useState } from "react";
 import Router from "./Router";
+import { SampleProvider } from "./Providers/SampleProvider";
+import { TodoProvider } from "./Providers/TodoProvider";
 
 
 // Routing ->
 
 // Context -> Gobal state managment
 
-export const SampleContext = createContext()
 
 const App = () => {
-    const [counter, setCounter] = useState(0)
-    return <SampleContext.Provider value={{counter, setCounter}}>
-        <Router />
-    </SampleContext.Provider>
+    
+    return <TodoProvider>
+        <SampleProvider>
+            <Router />
+        </SampleProvider>
+    </TodoProvider>
 }
 
 export default App;

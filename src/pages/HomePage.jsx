@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import "../styles/HomePage.css"
-import { SampleContext } from "../App";
+import { SampleContext } from "../Providers/SampleProvider";
 
 const HomePage = () => {
     const { counter, setCounter } = useContext(SampleContext)
